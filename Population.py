@@ -11,7 +11,6 @@ class Population:
         for i in range(size):
             self.snakes.append(Snake())
         self.best_snake = self.snakes[0]
-        self.score = 0
         self.high_score = 0
         self.best_fitness = 0
         self.gen = 1
@@ -27,15 +26,13 @@ class Population:
                 i.move()
                 self.live_snakes += 1
 
-    def update_score(self, score, score_text):
-        if score != self.best_snake.score:
-            score = self.best_snake.score
-            score_text.text = 'Score: {}'.format(score)
+    def update_score(self, score_text):
+        score_text.text = 'Score: {}'.format(self.best_snake.score)
 
     def update_high_score(self, high_score, high_score_text):
         if high_score > self.high_score:
             self.high_score = high_score
-            high_score_text.text = 'High score: {}'.format(high_score)
+            high_score_text.text = 'High score: {}'.format(self.high_score)
 
     def update_gen(self, gen_text):
         gen_text.text = 'Generation: {}'.format(self.gen)
@@ -50,12 +47,11 @@ class Population:
                 self.best_snake.show(canvas_shake)
                 self.best_snake.food.show(canvas_food)
                 self.best_snake.brain.show_nodes(self.best_snake.vision, self.best_snake.decision, canvas_nodes)
-                self.update_score(self.score, score_text)
+                self.update_score(score_text)
                 if self.live_snakes <= 1 and self.best_snake.dead:
+                    self.update_high_score(self.best_snake.score, high_score_text)
                     self.natural_selection()
-                    self.update_high_score(self.score, high_score_text)
-                    self.score = 3
-                    self.update_score(self.score, score_text)
+                    self.update_score(score_text)
                     self.update_gen(gen_text)
                     break
                 else:
@@ -81,6 +77,7 @@ class Population:
 
     def natural_selection(self):
         self.calculate_fitness()
+        scores.append(self.best_snake.score)
         self.set_best_snake()
 
         new_snakes = [self.best_snake]
@@ -91,8 +88,6 @@ class Population:
             new_snakes.append(child)
         del self.snakes
         self.snakes = new_snakes
-        scores.append(self.score)
-        self.score = 3
         self.gen += 1
 
     def mutate(self):
