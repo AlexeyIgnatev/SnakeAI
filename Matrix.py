@@ -23,12 +23,7 @@ class Matrix:
     def dot(self, n_matrix):
         result = Matrix(self.rows, n_matrix.cols)
         if self.cols == n_matrix.rows:
-            for i in range(self.rows):
-                for j in range(n_matrix.cols):
-                    summ = 0
-                    for k in range(self.cols):
-                        summ += self.matrix[i][k] * n_matrix.matrix[k][j]
-                    result.matrix[i][j] = summ
+            result.matrix = np.dot(self.matrix, n_matrix.matrix)
         return result
 
     def randomize(self):

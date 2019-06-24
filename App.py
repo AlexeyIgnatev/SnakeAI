@@ -6,7 +6,6 @@ from kivy.uix.label import Label
 from evolution_graph import show
 
 from Population import Population
-import numpy as np
 
 from kivy.graphics import Color, Line
 from threading import Thread

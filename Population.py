@@ -50,12 +50,12 @@ class Population:
                 self.best_snake.show(canvas_shake)
                 self.best_snake.food.show(canvas_food)
                 self.best_snake.brain.show_nodes(self.best_snake.vision, self.best_snake.decision, canvas_nodes)
-                print(self.best_snake.decision)
                 self.update_score(self.score, score_text)
                 if self.live_snakes <= 1 and self.best_snake.dead:
                     self.natural_selection()
                     self.update_high_score(self.score, high_score_text)
                     self.score = 3
+                    self.update_score(self.score, score_text)
                     self.update_gen(gen_text)
                     break
                 else:

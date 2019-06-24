@@ -1,7 +1,6 @@
 from Matrix import Matrix
 from config import size
 from kivy.graphics import Color, Line, Ellipse
-from kivy.uix.label import Label
 from config import x, y, w, h
 
 
@@ -31,7 +30,7 @@ class NeuralNet:
         inputs = Matrix.single_column_matrix_from_array(inputs_arr)
         curr_bias = inputs.add_bias()
         for i in range(self.h_layers):
-            hidden_ip = self.weights[0].dot(curr_bias)
+            hidden_ip = self.weights[i].dot(curr_bias)
             hidden_op = hidden_ip.activate()
             curr_bias = hidden_op.add_bias()
 
