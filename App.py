@@ -41,7 +41,7 @@ class SnakeAIApp(App):
         self.snake_widget.size = (1200, 800)
         self.food_widget.size = (1200, 800)
 
-        self.pop = Population(100)
+        self.pop = Population(200)
 
     def build(self):
         parent = Widget()

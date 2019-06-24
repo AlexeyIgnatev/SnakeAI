@@ -170,6 +170,7 @@ class Snake:
         else:
             self.dead = True
 
+
     def move_down(self):
         if self.y_vel != size:
             self.y_vel = -size
