@@ -1,5 +1,3 @@
-wheel
-setuptools
 docutils
 pygments
 pypiwin32
