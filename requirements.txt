@@ -5,3 +5,5 @@ kivy
 plotly
 numpy
 pillow
+kivy.deps.sdl2
+kivy.deps.glew
