@@ -1,8 +1,7 @@
 docutils
 pygments
-pypiwin32
+
 kivy
-plotly
 numpy
 pillow
 kivy.deps.sdl2
