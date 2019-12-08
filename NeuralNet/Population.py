@@ -1,6 +1,5 @@
 from Snake import Snake
 import random
-from evolution_graph import scores
 from config import fps
 from time import sleep, time
 
@@ -77,7 +76,6 @@ class Population:
 
     def natural_selection(self):
         self.calculate_fitness()
-        scores.append(self.best_snake.score)
         self.set_best_snake()
 
         new_snakes = [self.best_snake]
